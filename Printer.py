@@ -6,6 +6,7 @@ class Printer:
         self._model = model
         self._nozzle = nozzle
 
+        #TODO: Ukládání seznamu filamentů do JSON / DTB
         self.supported_filaments = {
         "PLA":215,
         "ABS":220,

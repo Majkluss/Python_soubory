@@ -1,0 +1,97 @@
+
+# import tkinter
+#
+# class Uzivatel:
+#     def __init__(self, jmeno, vek, registrovan):
+#         self.jmeno = jmeno
+#         self.vek = vek
+#         self.registrovan = registrovan
+#
+#     def __str__(self):
+#         return (f"{self.jmeno} se zaregistroval {self.registrovan}")
+#
+# class Databaze:
+#     uzivatele = []
+#     def __init__(self, soubor):
+#         self.soubor = soubor
+#
+#     def pridejUzivatele(self, jmeno, vek, registrovan):
+#         u = Uzivatel(jmeno, vek, registrovan)
+#         self.uzivatele.append(u)
+#
+#     def vratVsechny(self):
+#         return self.uzivatele
+#
+#     def uloz(self):
+#         with open(self.soubor, "w", encoding="utf-8") as f:
+#             for u in self.uzivatele:
+#                 hodnoty = [u.jmeno, str(u.vek), u.registrovan.strftime("%d.%m.%Y")]
+#                 radek = ";".join(hodnoty)
+#                 f.write(radek + "\n")
+#
+#     def nacti(self):
+#         pass
+#
+#
+# class Aplikace(tkinter.Frame):
+#     def __init__(self, master):
+#         super().__init__(master=master)
+#         self.master = master
+#         self.pack()
+#         self.db = Databaze("uzivatele.csv")
+#         self.master.title("Lekce4")
+#         self.tlacitkoUlozit = tkinter.Button(self.master, text="Uložit", width=40, command=self.tlacitkoUlozitClicked)
+#
+#         def tlacitkoUlozitClicked(self):
+#             pass
+#
+#
+# root = tkinter.Tk()
+# aplikace = Aplikace(root)
+# root.mainloop()
+
+
+import random
+class Clovek:
+    id = 1
+    @staticmethod
+    def c_mtd():
+        print("Spuštěn initor / konstruktor")
+
+
+    def __init__(self, jmeno, vek):
+        self.jmeno = jmeno
+        self.vek = vek
+        self.id = Clovek.id
+        Clovek.id += 1
+        Clovek.c_mtd()
+
+    def __str__(self):
+        return(f"Člověk č.{self.id}. Jméno: {self.jmeno}, věk: {self.vek}")
+
+mike = Clovek("Mike", 28)
+print(mike)
+luke = Clovek("Luke", 30)
+print(luke)
+
+jmena = ["Mike", "Luke", "Vader", "Yoda", "Ben", "Qui-Gon"]
+veky = [12, 24, 35, 17, 98, 54]
+
+def vypocti(a:int, b:int)->float:
+    return a / b
+
+print(vypocti(2,3))
+
+def pvt(exp:str)->None:
+    value = eval(exp)
+    print(f"{exp} = {value} # type = {type(value)}")
+
+cele = 1
+realne = 1.5
+string = "String"
+objekt = Clovek("Luke", 35)
+
+pvt('cele')
+pvt('realne')
+pvt('string')
+pvt('objekt')

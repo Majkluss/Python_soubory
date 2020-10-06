@@ -1,18 +1,19 @@
-class Printer:
-    firmware = None
-    if (firmware == None):
-        firmware = "nenalezena"
-    def __init__(self, model, nozzle):
-        self._model = model
-        self._nozzle = nozzle
+from Filament_types_loader import Filament_types_loader
+from Firmware import Firmware
 
-        #TODO: Ukládání seznamu filamentů do JSON / DTB
-        self.supported_filaments = {
-        "PLA":215,
-        "ABS":220,
-        "PP":254
-    }
+class Printer:
+
+    def __init__(self, model, nozzle, firmware=None, filament_types = "filaments/printer_supported_filaments.csv"):
+        self._model = model
+        self.nozzle = nozzle
+        self.firmware = firmware
+        if(self.firmware == None):
+            self.firmware = "nenalezena"
+        self.filament_types = filament_types
+        self.loader = Filament_types_loader(self.filament_types)
+
+    def change_filament_types_file(self, new_path):
+        self.filament_types = new_path
 
     def __str__(self):
-        filament = ", ".join(self.supported_filaments)
-        return(f"Tiskárna standard, model {self._model}, průměr trysky {self._nozzle}mm. Verze firmware {self.firmware}. Podporované filamenty: {filament}")
+        return(f"Tiskárna, model {self._model}, průměr trysky {self.nozzle} mm, verze firmware {self.firmware}. Podporované filamenty: {self.loader.filaments}")

@@ -5,5 +5,5 @@ class Firmware:
     def __str__(self):
         return(f"{self._version}")
 
-    def upgrade(self, new_version):
+    def upgrade(self, new_version: str):
         self._version = new_version
